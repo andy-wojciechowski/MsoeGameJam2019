@@ -3,14 +3,17 @@ import sys
 from game.player import Player
 from game.level1 import Level1
 
+SCREEN_WIDTH = 1000
+SCREEN_HEIGHT = 700
+
 
 def main():
     pygame.init()
 
-    screen = pygame.display.set_mode((1000, 700), 0, 32)
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
     pygame.display.set_caption('Cross Dimensional Platformer')
 
-    player = Player(pygame.image.load("anim1.png"))
+    player = Player(pygame.image.load("anim1.png"), SCREEN_WIDTH, SCREEN_HEIGHT)
     current_level = Level1(player)
 
     sprite_list = pygame.sprite.Group()
