@@ -1,5 +1,7 @@
-import pygame, sys
+import pygame
+import sys
 from pygame.locals import QUIT
+from core.platform import Platform
 
 
 def main():
@@ -9,6 +11,8 @@ def main():
     # TODO: Update this Title
     pygame.display.set_caption('Hello World')
 
+    temp = Platform(300, 300)
+    temp.update()
     pygame.display.update()
     while True:
         for event in pygame.event.get():
