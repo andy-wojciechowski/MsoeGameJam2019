@@ -26,4 +26,6 @@ class Level(ABC):
     def _stop_player_on_collision(self, sprites_to_check):
         for sprite in sprites_to_check:
             if pygame.sprite.collide_rect(self.player, sprite):
+                if not self.player.is_jumping:
+                    self.player.rect.x -= self.player.horizontal_speed
                 self.player.stop()
