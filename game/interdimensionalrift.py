@@ -1,7 +1,5 @@
 import pygame
 
-ALPHA_INCREMENT = 1
-
 
 class InterDimensionalRift(pygame.sprite.Sprite):
     def __init__(self, possible_images):
@@ -11,6 +9,7 @@ class InterDimensionalRift(pygame.sprite.Sprite):
         self.image = self.possible_images[self.current_image_number].copy()
         self.rect = self.image.get_rect()
         self.is_closed = False
+        self.horizontal_speed = 3
 
     def update(self):
         if not self.is_closed:
@@ -28,6 +27,19 @@ class InterDimensionalRift(pygame.sprite.Sprite):
             else:
                 self.image.set_alpha(self.image.get_alpha() - 1)
                 pygame.time.delay(3)
+
+    def handle_player_collision(self, player):
+        left_collision = pygame.sprite.collide_rect(player, self)
+        right_collision = pygame.sprite.collide_rect(self, player)
+
+        if not self.is_closed and (left_collision or right_collision):
+            player.stop()
+        else:
+            if left_collision:
+                self.rect.x += self.horizontal_speed
+
+            if right_collision:
+                self.rect.x -= self.horizontal_speed
 
     def close(self):
         self.is_closed = True
