@@ -18,7 +18,8 @@ class Level1(Level):
         crate_image = pygame.image.load("img/RTS_Crate.png").convert()
         crate_image = pygame.transform.scale(crate_image, (50, 50))
         all_rift_images = [pygame.image.load("img/barrel.png").convert(), crate_image]
-        level_rifts = [(all_rift_images, 150, 600)]
+        level_rifts = [(all_rift_images, 150, 600),
+                       (all_rift_images, 800, 383)]
         for rift in level_rifts:
             created_rift = InterDimensionalRift(rift[0])
             created_rift.rect.x = rift[1]
