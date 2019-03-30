@@ -7,14 +7,14 @@ from game.level1 import Level1
 def main():
     pygame.init()
 
+    screen = pygame.display.set_mode((1000, 700), 0, 32)
+    pygame.display.set_caption('Cross Dimensional Platformer')
+
     player = Player(pygame.image.load("anim1.png"))
     current_level = Level1(player)
 
     sprite_list = pygame.sprite.Group()
     sprite_list.add(player)
-
-    screen = pygame.display.set_mode((1000, 700), 0, 32)
-    pygame.display.set_caption('Cross Dimensional Platformer')
 
     while True:
         for event in pygame.event.get():
