@@ -1,6 +1,5 @@
 import pygame
 import sys
-from pygame.locals import QUIT
 from game.player import Player
 from game.level1 import Level1
 
@@ -20,10 +19,21 @@ def main():
 
     while True:
         for event in pygame.event.get():
-            if event.type == QUIT:
+            if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
 
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    player.move_right()
+                elif event.key == pygame.K_LEFT:
+                    player.move_left()
+
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
+                    player.stop()
+
+        screen.fill((0, 0, 0))
         sprite_list.update()
         current_level.update()
 
