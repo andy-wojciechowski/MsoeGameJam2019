@@ -32,6 +32,8 @@ def main():
                     player.move_left()
                 elif event.key == pygame.K_UP:
                     player.jump()
+                elif event.key == pygame.K_f:
+                    current_level.handle_rift_close()
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
