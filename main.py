@@ -13,7 +13,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
     pygame.display.set_caption('Cross Dimensional Platformer')
 
-    player = Player(pygame.image.load("anim1.png"), SCREEN_WIDTH, SCREEN_HEIGHT)
+    player = Player(pygame.image.load("anim1.png"), SCREEN_WIDTH)
     current_level = Level1(player)
 
     sprite_list = pygame.sprite.Group()
@@ -30,6 +30,8 @@ def main():
                     player.move_right()
                 elif event.key == pygame.K_LEFT:
                     player.move_left()
+                elif event.key == pygame.K_UP:
+                    player.jump()
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:

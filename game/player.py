@@ -1,17 +1,18 @@
 import pygame
 
-PLAYER_SPEED = 1
-
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, image, screen_width, screen_height):
+    def __init__(self, image, screen_width):
         super().__init__()
         self.image = image
         self.screen_width = screen_width
-        self.screen_height = screen_height
         self.rect = self.image.get_rect()
-
+        self.horizontal_speed = 1
         self.delta_x = 0
+        self.vertical_velocity = 8
+        self.mass = 1
+        self.is_jumping = False
+        self.sprite_grounded_on = None
 
     def update(self):
         self.rect.x += self.delta_x
@@ -20,11 +21,28 @@ class Player(pygame.sprite.Sprite):
         elif self.rect.x > self.screen_width - 25:
             self.rect.x = self.screen_width - 25
 
+        if self.is_jumping:
+            if self.vertical_velocity > 0:
+                work = 0.5 * self.mass * (self.vertical_velocity * self.vertical_velocity)
+            else:
+                work = -(0.5 * self.mass * (self.vertical_velocity * self.vertical_velocity))
+
+            self.rect.y -= work
+            self.vertical_velocity -= 1
+
     def move_right(self):
-        self.delta_x += PLAYER_SPEED
+        self.delta_x += self.horizontal_speed
 
     def move_left(self):
-        self.delta_x -= PLAYER_SPEED
+        self.delta_x -= self.horizontal_speed
 
-    def stop(self):
+    def stop(self, sprite_collided_with=None):
         self.delta_x = 0
+        if sprite_collided_with and self.is_jumping:
+            self.sprite_grounded_on = sprite_collided_with
+        self.is_jumping = False
+        self.vertical_velocity = 8
+
+    def jump(self):
+        self.is_jumping = True
+        self.sprite_grounded_on = None

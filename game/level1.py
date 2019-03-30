@@ -9,7 +9,7 @@ class Level1(Level):
         super().__init__(player)
 
         self.player.rect.x = 10
-        self.player.rect.y = 365
+        self.player.rect.y = 369
 
         self._setup_platforms()
         self._setup_rifts()
@@ -20,6 +20,7 @@ class Level1(Level):
             created_platform = Platform(platform[0], platform[1])
             created_platform.rect.x = platform[2]
             created_platform.rect.y = platform[3]
+            self.player.sprite_grounded_on = created_platform
             self.platform_list.add(created_platform)
 
     def _setup_rifts(self):
