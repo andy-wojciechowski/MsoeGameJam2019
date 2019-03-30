@@ -6,7 +6,10 @@ class Level1(Level):
     def __init__(self, player):
         super().__init__(player)
 
-        level = [(200, 80, 300, 300)]
+        self.player.rect.x = 10
+        self.player.rect.y = 365
+
+        level = [(1000, 350, 0, 400)]
         for platform in level:
             created_platform = Platform(platform[0], platform[1])
             created_platform.rect.x = platform[2]

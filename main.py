@@ -2,7 +2,7 @@ import pygame
 import sys
 from pygame.locals import QUIT
 from game.player import Player
-from game.Level1 import Level1
+from game.level1 import Level1
 
 
 def main():
@@ -29,7 +29,7 @@ def main():
 
         current_level.draw(screen)
         sprite_list.draw(screen)
-        
+
         pygame.display.update()
 
 
