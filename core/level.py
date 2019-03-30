@@ -3,15 +3,16 @@ from abc import ABC
 
 
 class Level(ABC):
-    def __init__(self, player, ground):
+    def __init__(self, player, ground_factor):
         self.rift_list = pygame.sprite.Group()
         self.player = player
-        self.ground = ground
+        self.ground_factor = ground_factor
 
     def update(self):
         self.rift_list.update()
         self._stop_player_on_collision(self.rift_list)
-        if self.player.is_jumping and self.player.rect.colliderect(self.ground.get_rect()):
+        if self.player.is_jumping and self.player.rect.y >= self.ground_factor:
+            self.player.rect.y = self.ground_factor
             self.player.stop()
 
     def draw(self, screen):

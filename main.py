@@ -32,7 +32,7 @@ def main():
     background_image5 = pygame.transform.scale(background_image5, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
     player = Player(player_image, SCREEN_WIDTH)
-    current_level = Level1(player, background_image5)
+    current_level = Level1(player)
 
     sprite_list = pygame.sprite.Group()
     sprite_list.add(player)

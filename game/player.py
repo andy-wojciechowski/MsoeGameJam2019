@@ -7,7 +7,7 @@ class Player(pygame.sprite.Sprite):
         self.image = image
         self.screen_width = screen_width
         self.rect = self.image.get_rect()
-        self.horizontal_speed = 1
+        self.horizontal_speed = 3
         self.delta_x = 0
         self.vertical_velocity = 8
         self.mass = 1
