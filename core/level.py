@@ -3,13 +3,16 @@ from abc import ABC
 
 
 class Level(ABC):
-    def __init__(self, player):
+    def __init__(self, player, ground):
         self.rift_list = pygame.sprite.Group()
         self.player = player
+        self.ground = ground
 
     def update(self):
         self.rift_list.update()
         self._stop_player_on_collision(self.rift_list)
+        if self.player.is_jumping and self.player.rect.colliderect(self.ground.get_rect()):
+            self.player.stop()
 
     def draw(self, screen):
         self.rift_list.draw(screen)
@@ -21,6 +24,5 @@ class Level(ABC):
 
     def _stop_player_on_collision(self, sprites_to_check):
         for sprite in sprites_to_check:
-            if sprite != self.player.sprite_grounded_on:
-                if pygame.sprite.collide_rect(sprite, self.player):
-                    self.player.stop(sprite_collided_with=sprite)
+            if pygame.sprite.collide_rect(self.player, sprite):
+                self.player.stop()

@@ -14,7 +14,6 @@ class InterDimensionalRift(pygame.sprite.Sprite):
 
     def update(self):
         if not self.is_closed:
-            print(self.image.get_alpha())
             if self.image.get_alpha() == 0:
                 self.current_image_number += 1
                 if self.current_image_number > len(self.possible_images) - 1:

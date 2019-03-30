@@ -4,8 +4,8 @@ from game.interdimensionalrift import InterDimensionalRift
 
 
 class Level1(Level):
-    def __init__(self, player):
-        super().__init__(player)
+    def __init__(self, player, ground):
+        super().__init__(player, ground)
 
         self.player.rect.x = 10
         self.player.rect.y = 600

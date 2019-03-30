@@ -16,9 +16,6 @@ def main():
     player_image = pygame.image.load("img/anim1.png").convert_alpha()
     player_image = pygame.transform.scale(player_image, (60, 60))
 
-    player = Player(player_image, SCREEN_WIDTH)
-    current_level = Level1(player)
-
     background_image1 = pygame.image.load("img/Hills Layer 01.png").convert_alpha()
     background_image1 = pygame.transform.scale(background_image1, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
@@ -34,8 +31,8 @@ def main():
     background_image5 = pygame.image.load("img/Hills Layer 05.png").convert_alpha()
     background_image5 = pygame.transform.scale(background_image5, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    background_image6 = pygame.image.load("img/Hills Layer 06.png").convert_alpha()
-    background_image6 = pygame.transform.scale(background_image6, (SCREEN_WIDTH, SCREEN_HEIGHT))
+    player = Player(player_image, SCREEN_WIDTH)
+    current_level = Level1(player, background_image5)
 
     sprite_list = pygame.sprite.Group()
     sprite_list.add(player)
@@ -69,7 +66,6 @@ def main():
         screen.blit(background_image3, (0, 0))
         screen.blit(background_image4, (0, 0))
         screen.blit(background_image5, (0, 0))
-        screen.blit(background_image6, (0, 0))
 
         current_level.draw(screen)
         sprite_list.draw(screen)

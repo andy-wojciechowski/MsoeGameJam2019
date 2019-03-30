@@ -12,7 +12,6 @@ class Player(pygame.sprite.Sprite):
         self.vertical_velocity = 8
         self.mass = 1
         self.is_jumping = False
-        self.sprite_grounded_on = None
 
     def update(self):
         self.rect.x += self.delta_x
@@ -36,13 +35,10 @@ class Player(pygame.sprite.Sprite):
     def move_left(self):
         self.delta_x -= self.horizontal_speed
 
-    def stop(self, sprite_collided_with=None):
+    def stop(self):
         self.delta_x = 0
-        if sprite_collided_with and self.is_jumping:
-            self.sprite_grounded_on = sprite_collided_with
         self.is_jumping = False
         self.vertical_velocity = 8
 
     def jump(self):
         self.is_jumping = True
-        self.sprite_grounded_on = None
