@@ -14,8 +14,7 @@ def main():
     sprite_list.add(player)
 
     screen = pygame.display.set_mode((1000, 700), 0, 32)
-    # TODO: Update this Title
-    pygame.display.set_caption('Hello World')
+    pygame.display.set_caption('Cross Dimensional Platformer')
 
     while True:
         for event in pygame.event.get():
