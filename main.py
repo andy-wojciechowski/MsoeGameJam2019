@@ -1,36 +1,28 @@
-import pygame, sys, thorpy
-from pygame.locals import QUIT
-
-pygame.init()
-app = thorpy.Application((5, 5))
+import pygame, thorpy
 
 
 def start_game():
     print("Game Started")
 
 
-window_surface = pygame.display.set_mode((900, 700), 0, 32)
-# TODO: Update this Title
-pygame.display.set_caption('Hello World')
+def main():
+    app = thorpy.Application((1024, 768), caption="Hello World")
 
-# TODO: Add center label with game name
-start_button = thorpy.make_button("Start", func=start_game)
+    # TODO: Add center label with game name
+    start_button = thorpy.make_button("Start", func=start_game)
 
-quit_button = thorpy.make_button("Quit")
-quit_button.set_as_exiter()
+    quit_button = thorpy.make_button("Quit")
+    quit_button.set_as_exiter()
 
-box = thorpy.Box.make([start_button, quit_button])
-box.center()
+    box = thorpy.Box.make([start_button, quit_button])
+    box.center()
 
-background = thorpy.Background.make(elements=[box])
-menu = thorpy.Menu(elements=background)
-menu.play()
+    background = thorpy.Background.make(elements=[box])
 
-pygame.display.update()
+    menu = thorpy.Menu(elements=background)
+    menu.play()
+    app.quit()
 
-while True:
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            app.quit()
-            pygame.quit()
-            sys.exit()
+
+if __name__ == "__main__":
+    main()
