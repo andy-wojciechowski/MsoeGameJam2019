@@ -16,6 +16,7 @@ class Level(ABC):
         if self.player.is_jumping and self.player.rect.y >= self.ground_factor:
             self.player.rect.y = self.ground_factor
             self.player.stop()
+            self.player.is_grounded = True
 
     def draw(self, screen):
         self.rift_list.draw(screen)

@@ -12,6 +12,7 @@ class Player(pygame.sprite.Sprite):
         self.vertical_velocity = 8
         self.mass = 1
         self.is_jumping = False
+        self.is_grounded = True
 
     def update(self):
         self.rect.x += self.delta_x
@@ -28,6 +29,8 @@ class Player(pygame.sprite.Sprite):
 
             self.rect.y -= work
             self.vertical_velocity -= 1
+        else:
+            self._apply_gravity()
 
     def move_right(self):
         self.delta_x += self.horizontal_speed
@@ -42,3 +45,16 @@ class Player(pygame.sprite.Sprite):
 
     def jump(self):
         self.is_jumping = True
+        self.is_grounded = False
+
+    def set_player_is_grounded(self):
+        self.is_grounded = True
+
+    def _apply_gravity(self):
+        if not self.is_grounded:
+            if self.vertical_velocity > 0:
+                self.vertical_velocity = -1
+
+            work = -(0.5 * self.mass * (self.vertical_velocity * self.vertical_velocity))
+            self.rect.y -= work
+            self.vertical_velocity -= 1

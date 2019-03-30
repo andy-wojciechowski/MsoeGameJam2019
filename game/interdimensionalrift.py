@@ -29,17 +29,11 @@ class InterDimensionalRift(pygame.sprite.Sprite):
                 pygame.time.delay(3)
 
     def handle_player_collision(self, player):
-        left_collision = pygame.sprite.collide_rect(player, self)
-        right_collision = pygame.sprite.collide_rect(self, player)
+        is_colliding = pygame.sprite.collide_rect(player, self)
 
-        if not self.is_closed and (left_collision or right_collision):
+        if not self.is_closed and not player.is_jumping and is_colliding:
+            player.rect.x = (self.rect.x - self.rect.width + 1)
             player.stop()
-        else:
-            if left_collision:
-                self.rect.x += self.horizontal_speed
-
-            if right_collision:
-                self.rect.x -= self.horizontal_speed
 
     def close(self):
         self.is_closed = True
