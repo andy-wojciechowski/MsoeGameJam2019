@@ -31,7 +31,7 @@ class Level1(Level):
 
     def _setup_platforms(self):
         level_platforms = [("img/Grass.png", 3, 775, 450),
-                           ("img/Grass.png", 2, 575, 280)]
+                           ("img/Grass.png", 2, 560, 280)]
         for platform in level_platforms:
             platform_sprites = pygame.sprite.Group()
             current_x = platform[2]
