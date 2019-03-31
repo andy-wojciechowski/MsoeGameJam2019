@@ -29,7 +29,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.x = self.screen_width - 25
 
         if self.sprite_grounded_on:
-            if self.rect.x > self.sprite_grounded_on.rect.x + 15 or \
+            if self.rect.x > self.sprite_grounded_on.rect.x + self.sprite_grounded_on.rect.width or \
                     self.rect.x < (self.sprite_grounded_on.rect.x - self.sprite_grounded_on.rect.width):
                 self.is_grounded = False
 
