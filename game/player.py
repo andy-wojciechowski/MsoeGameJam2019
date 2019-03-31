@@ -8,14 +8,20 @@ class Player(pygame.sprite.Sprite):
         self.screen_width = screen_width
         self.rect = self.image.get_rect()
         self.horizontal_speed = 3
-        self.delta_x = 0
         self.vertical_velocity = 8
         self.mass = 1
         self.is_jumping = False
         self.is_grounded = True
+        self.move_left = False
+        self.move_right = False
 
     def update(self):
-        self.rect.x += self.delta_x
+        if self.move_left:
+            self.rect.x += -self.horizontal_speed
+
+        if self.move_right:
+            self.rect.x += self.horizontal_speed
+
         if self.rect.x < 0:
             self.rect.x = 0
         elif self.rect.x > self.screen_width - 25:
@@ -32,14 +38,7 @@ class Player(pygame.sprite.Sprite):
         else:
             self._apply_gravity()
 
-    def move_right(self):
-        self.delta_x += self.horizontal_speed
-
-    def move_left(self):
-        self.delta_x -= self.horizontal_speed
-
     def stop(self):
-        self.delta_x = 0
         self.is_jumping = False
         self.vertical_velocity = 8
 
