@@ -13,6 +13,7 @@ class Level(ABC):
         self.rift_list.update()
         self.platform_list.update()
         self._handle_rift_player_collisions()
+        self._handle_platform_collisions()
         if self.player.rect.y >= self.ground_factor:
             self.player.rect.y = self.ground_factor
             self.player.stop()
@@ -32,3 +33,8 @@ class Level(ABC):
         for rift in self.rift_list:
             if pygame.sprite.collide_rect(self.player, rift):
                 rift.handle_player_collision(self.player)
+
+    def _handle_platform_collisions(self):
+        for platform in self.platform_list:
+            if pygame.sprite.collide_rect(self.player, platform):
+                platform.handle_player_collision(self.player)
