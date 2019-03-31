@@ -33,13 +33,13 @@ class InterDimensionalRift(pygame.sprite.Sprite):
 
         if not self.is_closed and not player.is_jumping and not player.sprite_grounded_on and is_colliding:
             if player.rect.x >= (self.rect.x - self.rect.width) and player.move_right:
-                player.rect.x = self.rect.x - self.rect.width + 1
+                player.rect.x = self.rect.x - self.rect.width + 20
                 player.stop()
             if player.rect.x <= (self.rect.x + self.rect.width) and player.move_left:
                 player.rect.x = self.rect.x + self.rect.width
                 player.stop()
         elif player.is_jumping and player.rect.y >= (self.rect.y - self.rect.height):
-            player.rect.y = self.rect.y - self.rect.height
+            player.rect.y = self.rect.y - self.rect.height + 20
             player.stop()
             player.is_grounded = True
             player.sprite_grounded_on = self

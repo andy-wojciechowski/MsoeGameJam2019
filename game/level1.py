@@ -16,12 +16,13 @@ class Level1(Level):
 
     def _setup_rifts(self):
         crate_image = pygame.image.load("img/RTS_Crate.png").convert()
-        crate_image = pygame.transform.scale(crate_image, (50, 50))
+        crate_image = pygame.transform.scale(crate_image, (75, 75))
         burning_crate = pygame.image.load("img/burning_crate00.png").convert()
+        burning_crate = pygame.transform.scale(burning_crate, (75, 75))
         burning_crate.set_alpha(255)
         all_rift_images = [burning_crate, crate_image]
-        level_rifts = [(all_rift_images, 150, 600),
-                       (all_rift_images, 800, 383)]
+        level_rifts = [(all_rift_images, 150, 590),
+                       (all_rift_images, 800, 373)]
         for rift in level_rifts:
             created_rift = InterDimensionalRift(rift[0])
             created_rift.rect.x = rift[1]
