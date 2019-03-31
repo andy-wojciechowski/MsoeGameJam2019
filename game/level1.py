@@ -39,4 +39,4 @@ class Level1(Level):
                 created_platform = Platform(platform[0], current_x, platform[3])
                 platform_sprites.add(created_platform)
                 current_x += created_platform.rect.width
-            self.platform_list.add(platform_sprites)
+            self.platform_list.append(platform_sprites)

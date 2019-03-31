@@ -15,6 +15,7 @@ class Player(pygame.sprite.Sprite):
         self.move_left = False
         self.move_right = False
         self.sprite_grounded_on = None
+        self.sprite_grounded_on_multiplier = 1
 
     def update(self):
         if self.move_left:
@@ -29,8 +30,8 @@ class Player(pygame.sprite.Sprite):
             self.rect.x = self.screen_width - 25
 
         if self.sprite_grounded_on:
-            if self.rect.x > self.sprite_grounded_on.rect.x + self.sprite_grounded_on.rect.width or \
-                    self.rect.x < (self.sprite_grounded_on.rect.x - self.sprite_grounded_on.rect.width):
+            if self.rect.x > self.sprite_grounded_on.rect.x + self.sprite_grounded_on_multiplier * self.sprite_grounded_on.rect.width or \
+                    self.rect.x < (self.sprite_grounded_on.rect.x - self.sprite_grounded_on_multiplier * self.sprite_grounded_on.rect.width):
                 self.is_grounded = False
 
         if self.is_jumping:
