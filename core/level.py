@@ -13,10 +13,11 @@ class Level(ABC):
         self.rift_list.update()
         self.platform_list.update()
         self._handle_rift_player_collisions()
-        if self.player.is_jumping and self.player.rect.y >= self.ground_factor:
+        if self.player.rect.y >= self.ground_factor:
             self.player.rect.y = self.ground_factor
             self.player.stop()
             self.player.is_grounded = True
+            self.player.sprite_grounded_on = None
 
     def draw(self, screen):
         self.rift_list.draw(screen)

@@ -14,6 +14,7 @@ class Player(pygame.sprite.Sprite):
         self.is_grounded = True
         self.move_left = False
         self.move_right = False
+        self.sprite_grounded_on = None
 
     def update(self):
         if self.move_left:
@@ -26,6 +27,11 @@ class Player(pygame.sprite.Sprite):
             self.rect.x = 0
         elif self.rect.x > self.screen_width - 25:
             self.rect.x = self.screen_width - 25
+
+        if self.sprite_grounded_on:
+            if self.rect.x > self.sprite_grounded_on.rect.x + 15 or \
+                    self.rect.x < (self.sprite_grounded_on.rect.x - self.sprite_grounded_on.rect.width):
+                self.is_grounded = False
 
         if self.is_jumping:
             if self.vertical_velocity > 0:
@@ -45,9 +51,6 @@ class Player(pygame.sprite.Sprite):
     def jump(self):
         self.is_jumping = True
         self.is_grounded = False
-
-    def set_player_is_grounded(self):
-        self.is_grounded = True
 
     def _apply_gravity(self):
         if not self.is_grounded:
