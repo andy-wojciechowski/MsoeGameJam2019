@@ -2,6 +2,7 @@ import pygame
 from core.level import Level
 from core.platform import Platform
 from game.interdimensionalrift import InterDimensionalRift
+from game.endgoal import EndGoal
 
 
 class Level1(Level):
@@ -10,6 +11,12 @@ class Level1(Level):
 
         self.player.rect.x = 10
         self.player.rect.y = 600
+
+        self.end_goal = EndGoal()
+        self.end_goal.rect.x = 580
+        self.end_goal.rect.y = 210
+
+        self.end_goal_sprites.add(self.end_goal)
 
         self._setup_rifts()
         self._setup_platforms()

@@ -43,21 +43,22 @@ def main():
                 pygame.quit()
                 sys.exit()
 
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT:
-                    player.move_right = True
-                elif event.key == pygame.K_LEFT:
-                    player.move_left = True
-                elif event.key == pygame.K_UP:
-                    player.jump()
-                elif event.key == pygame.K_f:
-                    current_level.handle_rift_close()
+            if not current_level.level_passed:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RIGHT:
+                        player.move_right = True
+                    elif event.key == pygame.K_LEFT:
+                        player.move_left = True
+                    elif event.key == pygame.K_UP:
+                        player.jump()
+                    elif event.key == pygame.K_f:
+                        current_level.handle_rift_close()
 
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_RIGHT:
-                    player.move_right = False
-                elif event.key == pygame.K_LEFT:
-                    player.move_left = False
+                if event.type == pygame.KEYUP:
+                    if event.key == pygame.K_RIGHT:
+                        player.move_right = False
+                    elif event.key == pygame.K_LEFT:
+                        player.move_left = False
 
         screen.fill((0, 0, 0))
         sprite_list.update()
@@ -71,6 +72,15 @@ def main():
 
         current_level.draw(screen)
         sprite_list.draw(screen)
+
+        if current_level.level_passed:
+            large_text = pygame.font.Font('freesansbold.ttf', 115)
+            text_surface = large_text.render("Level Passed!", True, (0, 0, 0))
+            text_rect = text_surface.get_rect()
+            text_rect.center = ((SCREEN_WIDTH / 2), (SCREEN_HEIGHT / 2))
+            screen.blit(text_surface, text_rect)
+            player.move_left = False
+            player.move_right = False
 
         pygame.display.flip()
 
