@@ -5,5 +5,6 @@ were not made from scratch
 Asset Links
  - Character Sprite: https://bakudas.itch.io/generic-platformer-pack
  - Background: https://edermunizz.itch.io/free-pixel-art-hill
- - Barrel: https://opengameart.org/content/barrel
+ - Burning Crate: https://opengameart.org/content/burning-crate
  - Box: https://opengameart.org/content/2d-wooden-box
+ - Platforms: https://bayat.itch.io/platform-game-assets
