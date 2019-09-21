@@ -1,4 +1,4 @@
-# MsoeGameJam2019
+# MSOE Sprint Game Jam 2019
 This game was made for the Casual Competition for MSOE's game dev club in 2019. Since this was made for the Casual Competition assets
 were not made from scratch
 
